@@ -38,7 +38,7 @@ unsigned int m(unsigned int n) {
 
 // Aufgabe 2)
 void swap(int *x, int *y) {
-    int buffer = *y + *x mod 2;
+    int buffer = *y + *x % 2;
 
     *y = *x;
     *x = buffer;
@@ -50,4 +50,34 @@ unsigned int ack(unsigned int x, unsigned int y) {
     if (y == 0) return ack(x - 1, 1);
 
     return ack(x - 1, ack(x, y - 1));
+}
+
+
+// main Funktion zum testen
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main (int args, char** argv) {
+	if (args == 3 && !strcmp("fib", argv[1])) {
+		printf("fib(%s) = %d\n", argv[2], fibonacci(atoi(argv[2])));
+	}
+
+	if (args == 3 && !strcmp("G", argv[1])) {
+		printf("g(%s) = %d\n", argv[2], g(atoi(argv[2])));
+	}
+
+	if (args == 3 && !strcmp("F", argv[1])) { 
+                printf("F(%s) = %d\n", argv[2], f(atoi(argv[2])));
+        }
+
+	if (args == 3 && !strcmp("M", argv[1])) { 
+                printf("M(%s) = %d\n", argv[2], m(atoi(argv[2])));
+        }
+
+	if (args == 4 && !strcmp("ack", argv[1])) { 
+                printf("ack(%s, %s) = %d\n", argv[2], argv[3], ack(atoi(argv[2]), atoi(argv[3])));
+        }
+
+	return 0;
 }
